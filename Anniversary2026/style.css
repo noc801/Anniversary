@@ -1,0 +1,145 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page background + centering */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #ffe0ef 0%, #f8b8d6 40%, #f48cbc 100%);
+    font-family: system-ui, sans-serif;
+    color: #3b1c2b;
+}
+
+/* Wrapper */
+.page-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    padding: 40px 20px;
+}
+
+/* Heart container */
+.heart-background {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Bigger classic heart */
+.heart {
+    position: relative;
+    width: 220px;   /* bigger */
+    height: 220px;  /* bigger */
+    background-color: #ff2f78;
+    transform: rotate(-45deg);
+    animation: heartbeat 1.2s infinite;
+
+    box-shadow:
+        0 0 50px rgba(255, 47, 120, 0.7),
+        0 0 100px rgba(255, 47, 120, 0.5);
+}
+
+/* Top circles scaled to match */
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    background-color: #ff2f78;
+    border-radius: 50%;
+}
+
+/* Left lobe */
+.heart::before {
+    top: -110px;
+    left: 0;
+}
+
+/* Right lobe */
+.heart::after {
+    left: 110px;
+    top: 0;
+}
+
+/* Heartbeat animation */
+@keyframes heartbeat {
+    0%   { transform: rotate(-45deg) scale(1); }
+    25%  { transform: rotate(-45deg) scale(1.08); }
+    40%  { transform: rotate(-45deg) scale(1); }
+    60%  { transform: rotate(-45deg) scale(1.12); }
+    100% { transform: rotate(-45deg) scale(1); }
+}
+
+/* Foreground content box */
+.generator-container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.generator-container h1 {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+/* Reason text */
+#reasonText {
+    font-size: 1.25rem;
+    margin: 16px 0 24px;
+    min-height: 3em;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Fade-in class */
+#reasonText.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Button */
+#newReasonBtn {
+    padding: 12px 26px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ff2f78, #ff0f62);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(255, 47, 120, 0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#newReasonBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 47, 120, 0.55);
+}
+
+#newReasonBtn:active {
+    transform: translateY(1px);
+}
+
+/* Note text */
+.note {
+    margin-top: 14px;
+    font-size: 0.85rem;
+    color: #7a4a63;
+}
